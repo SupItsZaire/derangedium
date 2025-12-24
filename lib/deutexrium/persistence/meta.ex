@@ -1,9 +1,9 @@
-defmodule Deutexrium.Persistence.Meta do
+defmodule Derangedium.Persistence.Meta do
   @moduledoc """
   Channel metadata serialization
   """
 
-  alias Deutexrium.Persistence
+  alias Derangedium.Persistence
 
   @type channel_setting()
     :: :train
@@ -34,13 +34,13 @@ defmodule Deutexrium.Persistence.Meta do
   defp path(channel_id), do: Persistence.root_for(channel_id) |> Path.join("meta.etf.gz")
 
   def load!(channel_id) when is_integer(channel_id) do
-    %Deutexrium.Persistence.Meta{} |> Map.merge(path(channel_id)
+    %Derangedium.Persistence.Meta{} |> Map.merge(path(channel_id)
         |> File.read!
         |> :zlib.gunzip
         |> :erlang.binary_to_term)
   end
 
-  def dump!(channel_id, %Deutexrium.Persistence.Meta{} = data) when is_integer(channel_id) do
+  def dump!(channel_id, %Derangedium.Persistence.Meta{} = data) when is_integer(channel_id) do
     data = data
         |> :erlang.term_to_binary
         |> :zlib.gzip

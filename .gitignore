@@ -20,10 +20,10 @@ erl_crash.dump
 *.ez
 
 # Ignore package tarball (built via "mix hex.build").
-deutexrium-*.tar
+derangedium-*.tar
 
 /.elixir_ls/
-/deuterium.log*
+/derangedium.log*
 /bup*.tar*
 build.sh
 ltemplate.txt

@@ -224,7 +224,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "builder",
-          "expr": "deutex_data_size",
+          "expr": "derange_data_size",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -397,7 +397,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "builder",
-          "expr": "deutex_processes",
+          "expr": "derange_processes",
           "legendFormat": "processes",
           "range": true,
           "refId": "Processes"
@@ -408,7 +408,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "builder",
-          "expr": "deutex_ports",
+          "expr": "derange_ports",
           "hide": false,
           "legendFormat": "ports",
           "range": true,
@@ -607,7 +607,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "builder",
-          "expr": "deutex_cmd_execute_bucket{command=\"meme\"}",
+          "expr": "derange_cmd_execute_bucket{command=\"meme\"}",
           "format": "heatmap",
           "legendFormat": "{{le}}",
           "range": true,
@@ -686,7 +686,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "builder",
-          "expr": "deutex_cmd_execute_bucket{command=\"generate\"}",
+          "expr": "derange_cmd_execute_bucket{command=\"generate\"}",
           "format": "heatmap",
           "legendFormat": "{{le}}",
           "range": true,
@@ -765,7 +765,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "builder",
-          "expr": "deutex_cmd_execute_bucket{command=\"generate_from\"}",
+          "expr": "derange_cmd_execute_bucket{command=\"generate_from\"}",
           "format": "heatmap",
           "legendFormat": "{{le}}",
           "range": true,
@@ -844,7 +844,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "builder",
-          "expr": "deutex_cmd_execute_bucket{command=\"gen_by_them\"}",
+          "expr": "derange_cmd_execute_bucket{command=\"gen_by_them\"}",
           "format": "heatmap",
           "legendFormat": "{{le}}",
           "range": true,
@@ -941,7 +941,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "deutex_cmd_execute_sum{command=~\"donate|first_time_setup|help|privacy|scoreboard|settings|stats|status|support\"}\n/ deutex_cmd_execute_count{command=~\"donate|first_time_setup|help|privacy|scoreboard|settings|stats|status|support\"}",
+          "expr": "derange_cmd_execute_sum{command=~\"donate|first_time_setup|help|privacy|scoreboard|settings|stats|status|support\"}\n/ derange_cmd_execute_count{command=~\"donate|first_time_setup|help|privacy|scoreboard|settings|stats|status|support\"}",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -1040,7 +1040,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "deutex_cmd_execute_sum{command=~\"gen_by_them|gen_global|generate_from|generate|impostor|meme|pre_train|reset\"}\n/ deutex_cmd_execute_count{command=~\"gen_by_them|gen_global|generate_from|generate|impostor|meme|pre_train|reset\"}",
+          "expr": "derange_cmd_execute_sum{command=~\"gen_by_them|gen_global|generate_from|generate|impostor|meme|pre_train|reset\"}\n/ derange_cmd_execute_count{command=~\"gen_by_them|gen_global|generate_from|generate|impostor|meme|pre_train|reset\"}",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -1065,7 +1065,7 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Deutexrium",
+  "title": "Derangedium",
   "uid": "bw2bz4TVz",
   "version": 7,
   "weekStart": ""

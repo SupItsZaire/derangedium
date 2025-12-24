@@ -1,16 +1,16 @@
-defmodule Deutexrium.MixProject do
+defmodule Derangedium.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :deutexrium,
+      app: :derangedium,
       version: "2.6.1",
       elixir: "~> 1.8",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       releases: [
-        deutexrium: [
-          cookie: "deutexrium"
+        derangedium: [
+          cookie: "derangedium"
         ]
       ]
     ]
@@ -18,7 +18,7 @@ defmodule Deutexrium.MixProject do
 
   def application do
     [
-      mod: {Deutexrium.App, []},
+      mod: {Derangedium.App, []},
       extra_applications: [
         :logger,
         :os_mon,

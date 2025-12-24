@@ -1,12 +1,12 @@
-defmodule Deutexrium.Util.Migrate do
-  @moduledoc "Migrates Deuterium v1 models to v2"
+defmodule Derangedium.Util.Migrate do
+  @moduledoc "Migrates Derangedium v1 models to v2"
 
   require Logger
-  alias Deutexrium.Persistence
+  alias Derangedium.Persistence
 
   def migrate(channel_id, limit \\ 100_000) do
     Logger.info("migrate-#{channel_id}: starting")
-    data_path = Application.fetch_env!(:deutexrium, :data_path)
+    data_path = Application.fetch_env!(:derangedium, :data_path)
 
     # read model and meta
     Logger.debug("migrate-#{channel_id}: reading model and meta")
@@ -67,7 +67,7 @@ defmodule Deutexrium.Util.Migrate do
   def migrate_all do
     Logger.info("migrate all: starting")
 
-    path = Application.fetch_env!(:deutexrium, :data_path)
+    path = Application.fetch_env!(:derangedium, :data_path)
     model_ids = Path.join(path, "archive")
       |> File.ls!
       |> Enum.filter(fn x -> String.starts_with?(x, "model_") end)
@@ -90,8 +90,8 @@ defmodule Deutexrium.Util.Migrate do
 end
 
 
-# root = "/var/deutexrium/data"
-# File.ls!("/var/deutexrium/data")
+# root = "/var/derangedium/data"
+# File.ls!("/var/derangedium/data")
 #   |> Enum.flat_map(fn dir -> Path.join(root, dir) |> File.ls! |> Enum.map(fn sub -> Path.join([root, dir, sub, "state.etf"]) end) end)
 #   |> Enum.map(fn path -> {path, %{
 #     __struct__: Markov.ModelServer.State,

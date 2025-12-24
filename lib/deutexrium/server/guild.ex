@@ -1,12 +1,12 @@
-defmodule Deutexrium.Server.Guild do
+defmodule Derangedium.Server.Guild do
   @moduledoc """
   Keeps track of guild data and settings
   """
 
   use GenServer
   require Logger
-  alias Deutexrium.Persistence.GuildMeta
-  alias Deutexrium.Server.RqRouter
+  alias Derangedium.Persistence.GuildMeta
+  alias Derangedium.Server.RqRouter
 
   @impl true
   def init(id) do
@@ -22,7 +22,7 @@ defmodule Deutexrium.Server.Guild do
     end
     Logger.info("guild-#{id} server: loaded")
 
-    timeout = Application.fetch_env!(:deutexrium, :guild_unload_timeout)
+    timeout = Application.fetch_env!(:derangedium, :guild_unload_timeout)
     {:ok, {id, meta, timeout}, timeout}
   end
 

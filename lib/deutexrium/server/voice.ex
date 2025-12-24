@@ -1,4 +1,4 @@
-defmodule Deutexrium.Server.Voice do
+defmodule Derangedium.Server.Voice do
   @moduledoc """
   Communicates with the Node Voice Server:
     - gets recognized sentences from it
@@ -7,7 +7,7 @@ defmodule Deutexrium.Server.Voice do
 
   use GenServer
   require Logger
-  alias Deutexrium.Server.{RqRouter, Channel}
+  alias Derangedium.Server.{RqRouter, Channel}
 
   @triggers [
     "slash say",
@@ -28,7 +28,7 @@ defmodule Deutexrium.Server.Voice do
   @impl true
   def init(id) do
     # create http connection
-    {host, port} = Application.fetch_env!(:deutexrium, :node_voice_server)
+    {host, port} = Application.fetch_env!(:derangedium, :node_voice_server)
     {:ok, conn} = :gun.open(host, port)
     receive do
       {:gun_up, ^conn, _} -> :ok
@@ -41,9 +41,9 @@ defmodule Deutexrium.Server.Voice do
     end
 
     # set generation rate
-    Deutexrium.Server.Channel.set(id, :autogen_rate, 15)
+    Derangedium.Server.Channel.set(id, :autogen_rate, 15)
 
-    timeout = Application.fetch_env!(:deutexrium, :channel_unload_timeout)
+    timeout = Application.fetch_env!(:derangedium, :channel_unload_timeout)
     {:ok, {id, timeout, {conn, stream}}, timeout}
   end
 
@@ -120,7 +120,7 @@ defmodule Deutexrium.Server.Voice do
       chan.type != 2 ->
         {:error, :text}
 
-      guild in Deutexrium.Persistence.allowed_vc() ->
+      guild in Derangedium.Persistence.allowed_vc() ->
         RqRouter.route_to_voice(id, {:join, lang})
 
       true ->

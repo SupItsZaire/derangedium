@@ -4,8 +4,8 @@ git_hash = String.trim(git_hash) |> String.slice(0..5)
 {_, dirty} = System.cmd("git", ["diff-files", "--quiet"])
 git_hash = if dirty > 0 do "#{git_hash}-dirty" else git_hash end
 
-defmodule Deutexrium.Command.Stats do
-  use Deutexrium.Command.WithDefaultImports
+defmodule Derangedium.Command.Stats do
+  use Derangedium.Command.WithDefaultImports
   @moduledoc """
   Sends back UNINTERESTING and BORING info
   """
@@ -19,7 +19,7 @@ defmodule Deutexrium.Command.Stats do
   }
 
   def handle_command(%Struct.Interaction{locale: locale} = interaction) do
-    used_space = GenServer.call(Deutexrium.Persistence, :storage_size) |> div(1024)
+    used_space = GenServer.call(Derangedium.Persistence, :storage_size) |> div(1024)
     used_memory = :erlang.memory(:total) |> div(1024 * 1024)
     %{guild: guild_server_cnt, channel: chan_server_cnt} = Server.RqRouter.server_count
     {uptime, _} = :erlang.statistics(:wall_clock)
@@ -37,8 +37,8 @@ defmodule Deutexrium.Command.Stats do
           translate(locale, "response.stats.data_size.value", ["#{used_space}", "#{used_space |> div(1024)}"]), true)
         |> Struct.Embed.put_field(translate(locale, "response.stats.uptime"), "#{uptime}", true)
         |> Struct.Embed.put_field(translate(locale, "response.stats.existence"), "#{been_created_for}", true)
-        |> Struct.Embed.put_field(translate(locale, "response.stats.servers"), "#{Deutexrium.Persistence.guild_cnt}", true)
-        |> Struct.Embed.put_field(translate(locale, "response.stats.channels"), "#{Deutexrium.Persistence.chan_cnt}", true)
+        |> Struct.Embed.put_field(translate(locale, "response.stats.servers"), "#{Derangedium.Persistence.guild_cnt}", true)
+        |> Struct.Embed.put_field(translate(locale, "response.stats.channels"), "#{Derangedium.Persistence.chan_cnt}", true)
         |> Struct.Embed.put_field(translate(locale, "response.stats.ram.title"), translate(locale, "response.stats.ram.value", ["#{used_memory}"]), true)
         |> Struct.Embed.put_field(translate(locale, "response.stats.guild_servers"), "#{guild_server_cnt}", true)
         |> Struct.Embed.put_field(translate(locale, "response.stats.channel_servers"), "#{chan_server_cnt}", true)

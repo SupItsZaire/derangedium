@@ -1,8 +1,8 @@
-defmodule Deutexrium.Server.RqRouter do
+defmodule Derangedium.Server.RqRouter do
   @moduledoc "Resource server supervisor and router for requests"
 
   require Logger
-  alias Deutexrium.Server
+  alias Derangedium.Server
 
   @type server_type :: :channel | :guild | :voice | :settings
   @type target :: {:channel, {integer, integer}} | {:guild, integer} | {:voice, {integer, integer}} | {:settings, {integer, integer}}
@@ -21,7 +21,7 @@ defmodule Deutexrium.Server.RqRouter do
       :settings -> Server.Settings
     end
 
-    result = DynamicSupervisor.start_child(Deutexrium.ServerSup, %{
+    result = DynamicSupervisor.start_child(Derangedium.ServerSup, %{
       id: what,
       start: {GenServer, :start_link, [module, id, [name: name]]},
       restart: :transient

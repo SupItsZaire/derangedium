@@ -1,5 +1,5 @@
-defmodule Deutexrium.Command.FirstTimeSetup do
-  use Deutexrium.Command.WithDefaultImports
+defmodule Derangedium.Command.FirstTimeSetup do
+  use Derangedium.Command.WithDefaultImports
   @moduledoc """
   Invokes the first time setup process
   """

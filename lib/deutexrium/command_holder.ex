@@ -1,11 +1,11 @@
-defmodule Deutexrium.CommandHolder do
+defmodule Derangedium.CommandHolder do
   use GenServer
   @moduledoc """
   Holds a ETS table with command information and populates it when requested
   """
 
   require Logger
-  alias Deutexrium.{Command, Translation}
+  alias Derangedium.{Command, Translation}
 
   @command_modules [
     Command.Donate,

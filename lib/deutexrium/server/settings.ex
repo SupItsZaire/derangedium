@@ -1,11 +1,11 @@
-defmodule Deutexrium.Server.Settings do
+defmodule Derangedium.Server.Settings do
   use GenServer
   @moduledoc """
   Supports /settings and /first_time_setup sessions
   """
-  alias Deutexrium.Server.{Channel, Guild, RqRouter}
+  alias Derangedium.Server.{Channel, Guild, RqRouter}
   alias Nostrum.Api
-  import Deutexrium.Translation, only: [translate: 2, translate: 3]
+  import Derangedium.Translation, only: [translate: 2, translate: 3]
 
   defmodule FTS do
     @moduledoc "First Time Setup state"
@@ -427,20 +427,20 @@ defmodule Deutexrium.Server.Settings do
       if key != :impostor do
         case {spec.type, val} do
           {:channel_sel, x} when x == :all or x == :none ->
-            Deutexrium.Server.Guild.set(guild, key, x == :all)
-            for id <- all_channels, do: Deutexrium.Server.Channel.set({id, guild}, key, nil)
+            Derangedium.Server.Guild.set(guild, key, x == :all)
+            for id <- all_channels, do: Derangedium.Server.Channel.set({id, guild}, key, nil)
 
           {:channel_sel, {x, overrides}} when x == :some or x == :all_except ->
-            Deutexrium.Server.Guild.set(guild, key, x == :all_except)
-            for id <- overrides, do: Deutexrium.Server.Channel.set({id, guild}, key, x == :some)
+            Derangedium.Server.Guild.set(guild, key, x == :all_except)
+            for id <- overrides, do: Derangedium.Server.Channel.set({id, guild}, key, x == :some)
 
           {:guild_nb_setting, _} ->
-            Deutexrium.Server.Guild.set(guild, key, val)
-            for id <- all_channels, do: Deutexrium.Server.Channel.set({id, guild}, key, nil)
+            Derangedium.Server.Guild.set(guild, key, val)
+            for id <- all_channels, do: Derangedium.Server.Channel.set({id, guild}, key, nil)
         end
         []
       else
-        for id <- all_channels, do: Deutexrium.Server.Channel.set({id, guild}, :webhook_data, nil)
+        for id <- all_channels, do: Derangedium.Server.Channel.set({id, guild}, :webhook_data, nil)
         case val do
           :none -> []
           {:some, overrides} -> overrides
@@ -450,7 +450,7 @@ defmodule Deutexrium.Server.Settings do
           case Api.create_webhook(id, %{name: "Deuterium impersonation mode", avatar: "https://cdn.discordapp.com/embed/avatars/0.png"}, "create webhook for impersonation") do
             {:ok, %{id: hook_id, token: hook_token}} ->
               data = {hook_id, hook_token}
-              Deutexrium.Server.Channel.set({id, guild}, :webhook_data, data)
+              Derangedium.Server.Channel.set({id, guild}, :webhook_data, data)
               :ok
             {:error, %{status_code: 403}} -> {:access, id}
             {:error, err} -> {err, id}

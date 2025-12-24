@@ -1,4 +1,4 @@
-defmodule Deutexrium.Command do
+defmodule Derangedium.Command do
   use Nostrum.Consumer
   @moduledoc """
   Handles interactions and other events and passes them down to the handling modules
@@ -6,21 +6,21 @@ defmodule Deutexrium.Command do
 
   require Logger
   alias Nostrum.{Api, Struct.Interaction}
-  alias Deutexrium.CommandHolder
+  alias Derangedium.CommandHolder
 
   defmacro __using__(_) do
     quote do
-      @behaviour Deutexrium.Command
+      @behaviour Derangedium.Command
     end
   end
   defmodule WithDefaultImports do
     @moduledoc "Implements Command with useful default imports"
     defmacro __using__(_) do
       quote do
-        @behaviour Deutexrium.Command
+        @behaviour Derangedium.Command
         alias Nostrum.{Api, Struct}
-        alias Deutexrium.Server
-        import Deutexrium.Translation, only: [translate: 2, translate: 3]
+        alias Derangedium.Server
+        import Derangedium.Translation, only: [translate: 2, translate: 3]
       end
     end
   end
@@ -51,7 +51,7 @@ defmodule Deutexrium.Command do
     end
 
     {us, result} = :timer.tc(fn -> module.handle_command(interaction) end)
-    Deutexrium.Prometheus.command_handled(command, us)
+    Derangedium.Prometheus.command_handled(command, us)
 
     case result do
       :ok ->

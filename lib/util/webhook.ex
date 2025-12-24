@@ -1,4 +1,4 @@
-defmodule Deutexrium.Util.Webhook do
+defmodule Derangedium.Util.Webhook do
   @moduledoc """
   Helps with webhooks and typing simulation
   """
@@ -23,7 +23,7 @@ defmodule Deutexrium.Util.Webhook do
     # wrong
     # it's not "dirty", it's straight up HORRIBLE
     if hack do
-      case Api.create_message(channel, content: "this message will be removed shortly.... hold on") do
+      case Api.create_message(channel, content: "loading imposter...") do
         {:ok, message} -> Api.delete_message(message)
         _ -> :ok
       end
@@ -34,13 +34,13 @@ defmodule Deutexrium.Util.Webhook do
     # remember the current nick
     %{nick: old_nick} = Api.get_guild_member!(guild, Nostrum.Cache.Me.get().id)
     # change nickname
-    Api.modify_current_user_nick(guild, %{nick: username <> " (Deuterium)"})
+    Api.modify_current_user_nick(guild, %{nick: username <> " (Derangedium Imposter)"})
 
     # do the actual typing
     simulate_typing(text, channel, hack)
 
     # change nickname back
-    unless old_nick != nil and String.contains?(old_nick, " (Deuterium)") do
+    unless old_nick != nil and String.contains?(old_nick, " (Derangedium Imposter)") do
       Api.modify_current_user_nick(guild, %{nick: old_nick})
     end
   end
@@ -66,7 +66,7 @@ defmodule Deutexrium.Util.Webhook do
     # simulate tping
     simulate_typing(text, chan, true, guild, user.username)
 
-    case Api.execute_webhook(id, token, %{content: text, username: user.username <> " (Deuterium)", avatar_url: ava}) do
+    case Api.execute_webhook(id, token, %{content: text, username: user.username <> " (Derangedium Imposter)", avatar_url: ava}) do
       {:ok} -> :ok
       {:error, err} ->
         Logger.warn("webhook error: #{inspect err}")

@@ -17,13 +17,13 @@ RUN export MIX_ENV=prod && \
     mix release
 
 RUN mkdir /export && \
-    cp -r _build/prod/rel/deutexrium/ /export
+    cp -r _build/prod/rel/derangedium/ /export
 
 # deploy
 FROM alpine:3
 
 ENV REPLACE_OS_VARS=true
-ENV RELEASE_NODE=deuterium
+ENV RELEASE_NODE=derangedium
 RUN mkdir -p /opt/app
 COPY --from=build /export/ /opt/app
 
@@ -40,6 +40,6 @@ ENV RELEASE_VM_ARGS=vm.args
 EXPOSE 4369
 EXPOSE 25565
 EXPOSE 4040
-VOLUME ["/var/deutexrium"]
-ENTRYPOINT ["/opt/app/deutexrium/bin/deutexrium"]
+VOLUME ["/var/derangedium"]
+ENTRYPOINT ["/opt/app/derangedium/bin/derangedium"]
 CMD ["start"]

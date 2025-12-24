@@ -1,5 +1,5 @@
-defmodule Deutexrium.Command.Scoreboard do
-  use Deutexrium.Command.WithDefaultImports
+defmodule Derangedium.Command.Scoreboard do
+  use Derangedium.Command.WithDefaultImports
   @moduledoc """
   Sends back the server scoreboard
   """

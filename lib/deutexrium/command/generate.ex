@@ -1,5 +1,5 @@
-defmodule Deutexrium.Command.Generate do
-  use Deutexrium.Command.WithDefaultImports
+defmodule Derangedium.Command.Generate do
+  use Derangedium.Command.WithDefaultImports
   @moduledoc """
   Generates a message using the channel's local model. Also handles training on
   / reacting to normal messages
@@ -60,7 +60,7 @@ defmodule Deutexrium.Command.Generate do
         prompt = msg.content |> String.replace("<@#{bot_id}>", "") |> String.replace("<@!#{bot_id}>", "")
         Logger.debug("mentioned")
         {text, _} = Server.Channel.generate({msg.channel_id, msg.guild_id}, nil, prompt)
-        Deutexrium.Util.Webhook.simulate_typing(text, msg.channel_id, false)
+        Derangedium.Util.Webhook.simulate_typing(text, msg.channel_id, false)
         Api.create_message(msg.channel_id, content: text, message_reference: %{message_id: msg.id})
       else
         # only train if it doesn't contain bot mentions
@@ -75,7 +75,7 @@ defmodule Deutexrium.Command.Generate do
             else
               nil
             end
-            Deutexrium.Util.Webhook.try_sending_webhook({text, author}, msg.channel_id, webhook_data, msg.guild_id)
+            Derangedium.Util.Webhook.try_sending_webhook({text, author}, msg.channel_id, webhook_data, msg.guild_id)
         end
       end
     end

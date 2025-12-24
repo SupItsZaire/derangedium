@@ -1,5 +1,5 @@
-defmodule Deutexrium.Command.PreTrain do
-  use Deutexrium.Command.WithDefaultImports
+defmodule Derangedium.Command.PreTrain do
+  use Derangedium.Command.WithDefaultImports
   @moduledoc """
   Trains the current channel model on existing messages
   """

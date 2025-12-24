@@ -1,5 +1,5 @@
-defmodule Deutexrium.Command.GenGlobal do
-  use Deutexrium.Command.WithDefaultImports
+defmodule Derangedium.Command.GenGlobal do
+  use Derangedium.Command.WithDefaultImports
   @moduledoc """
   Generates a message using the global model
   """

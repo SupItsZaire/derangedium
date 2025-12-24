@@ -1,5 +1,5 @@
-defmodule Deutexrium.Command.Help do
-  use Deutexrium.Command.WithDefaultImports
+defmodule Derangedium.Command.Help do
+  use Derangedium.Command.WithDefaultImports
   @moduledoc """
   Sends back command descriptions in an embed
   """
@@ -17,7 +17,7 @@ defmodule Deutexrium.Command.Help do
       |> Struct.Embed.put_url("https://deut.psi3.ru/")
       |> Struct.Embed.put_field(translate(locale, "response.help.regular"), translate(locale, "response.help.regular_sub"))
 
-    commands = Deutexrium.CommandHolder.list_commands()
+    commands = Derangedium.CommandHolder.list_commands()
       |> Enum.map(fn {_, mod, _} -> mod.spec() end)
     regular = Enum.filter(commands, fn %{flags: flags} -> :admin not in flags end)
     admin = Enum.filter(commands, fn %{flags: flags} -> :admin in flags end)

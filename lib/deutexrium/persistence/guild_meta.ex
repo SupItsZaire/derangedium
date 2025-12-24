@@ -1,9 +1,9 @@
-defmodule Deutexrium.Persistence.GuildMeta do
+defmodule Derangedium.Persistence.GuildMeta do
   @moduledoc """
   Guild data serialization
   """
 
-  alias Deutexrium.Persistence
+  alias Derangedium.Persistence
 
   @derive Jason.Encoder
   defstruct train: true,
@@ -19,13 +19,13 @@ defmodule Deutexrium.Persistence.GuildMeta do
   defp path(guild_id), do: Persistence.root_for(guild_id) |> Path.join("guild_meta.etf.gz")
 
   def load!(guild_id) when is_integer(guild_id) do
-    %Deutexrium.Persistence.GuildMeta{} |> Map.merge(path(guild_id)
+    %Derangedium.Persistence.GuildMeta{} |> Map.merge(path(guild_id)
         |> File.read!
         |> :zlib.gunzip
         |> :erlang.binary_to_term)
   end
 
-  def dump!(guild_id, %Deutexrium.Persistence.GuildMeta{} = data) when is_integer(guild_id) do
+  def dump!(guild_id, %Derangedium.Persistence.GuildMeta{} = data) when is_integer(guild_id) do
     File.mkdir_p(Persistence.root_for(guild_id))
     data = data
         |> :erlang.term_to_binary

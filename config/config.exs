@@ -1,7 +1,7 @@
 import Config
 
-config :deutexrium,
-  data_path: (if Mix.env() == :prod, do: "/var/deutexrium/data", else: ".data"),
+config :derangedium,
+  data_path: (if Mix.env() == :prod, do: "/var/derangedium/data", else: ".data"),
   channel_unload_timeout: 3 * 1000, # milliseconds
   guild_unload_timeout: 4 * 1000,
   log_interval: 1000,
@@ -10,7 +10,7 @@ config :deutexrium,
   pre_train_batch_size: 100,
   scrape_port: 4040
 
-config :prometheus, Deutexrium.Prometheus.Plug,
+config :prometheus, Derangedium.Prometheus.Plug,
   path: "/metrics",
   format: :auto,
   registry: :default,
@@ -23,7 +23,7 @@ config :logger, :console,
   metadata: [:shard, :guild, :channel],
   level: :info
 config :logger, :file,
-  path: "/var/deutexrium/latest.log",
+  path: "/var/derangedium/latest.log",
   level: :info
 
 config :nostrum,

@@ -1,5 +1,5 @@
-defmodule Deutexrium.Command.Privacy do
-  use Deutexrium.Command.WithDefaultImports
+defmodule Derangedium.Command.Privacy do
+  use Derangedium.Command.WithDefaultImports
   @moduledoc """
   Sends back the privacy policy
   """

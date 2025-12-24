@@ -1,4 +1,4 @@
-defmodule Deutexrium.Presence do
+defmodule Derangedium.Presence do
   use GenServer
   @moduledoc "Updates Discord presence"
 

@@ -1,5 +1,5 @@
-defmodule Deutexrium.Command.Reset do
-  use Deutexrium.Command.WithDefaultImports
+defmodule Derangedium.Command.Reset do
+  use Derangedium.Command.WithDefaultImports
   @moduledoc """
   Resets the channel model or channel/server settings
   """

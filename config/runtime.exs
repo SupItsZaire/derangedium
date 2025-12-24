@@ -1,4 +1,4 @@
 import Config
 
 config :nostrum,
-  token: System.get_env("DEUTEX_TOKEN") |> String.trim
+  token: System.get_env("DERANGE_TOKEN") |> String.trim

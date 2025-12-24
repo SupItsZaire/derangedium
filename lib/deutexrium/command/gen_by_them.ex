@@ -1,5 +1,5 @@
-defmodule Deutexrium.Command.GenByThem do
-  use Deutexrium.Command.WithDefaultImports
+defmodule Derangedium.Command.GenByThem do
+  use Derangedium.Command.WithDefaultImports
   @moduledoc """
   Generates a message as if it was said by the selected person
   """
@@ -25,6 +25,6 @@ defmodule Deutexrium.Command.GenByThem do
   end
 
   def finish_handling({data, channel_id, webhook, guild_id}) do
-    Deutexrium.Util.Webhook.try_sending_webhook(data, channel_id, webhook, guild_id)
+    Derangedium.Util.Webhook.try_sending_webhook(data, channel_id, webhook, guild_id)
   end
 end

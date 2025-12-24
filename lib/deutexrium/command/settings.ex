@@ -1,5 +1,5 @@
-defmodule Deutexrium.Command.Settings do
-  use Deutexrium.Command.WithDefaultImports
+defmodule Derangedium.Command.Settings do
+  use Derangedium.Command.WithDefaultImports
   @moduledoc """
   Invokes the settings menu
   """

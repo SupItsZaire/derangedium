@@ -1,4 +1,4 @@
-defmodule Deutexrium.Translation do
+defmodule Derangedium.Translation do
   use GenServer
   require Logger
   @moduledoc """
@@ -29,7 +29,7 @@ defmodule Deutexrium.Translation do
 
   defp reload_langs(table) do
     :ets.delete_all_objects(table)
-    tr_root = Path.join(:code.priv_dir(:deutexrium), "translation")
+    tr_root = Path.join(:code.priv_dir(:derangedium), "translation")
 
     langs = for file_path <- Path.wildcard(Path.join(tr_root, "*.json")) do
       lang = file_path |> Path.basename |> Path.rootname

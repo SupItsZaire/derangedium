@@ -1,8 +1,8 @@
-defmodule Deutexrium.Plug do
+defmodule Derangedium.Plug do
   import Plug.Conn
   use Plug.Router
 
-  plug Deutexrium.Prometheus.Plug
+  plug Derangedium.Prometheus.Plug
 
   get "/metrics" do
     send_resp(conn, 200, "ok")

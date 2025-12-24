@@ -1,5 +1,5 @@
-defmodule Deutexrium.Command.Impostor do
-  use Deutexrium.Command.WithDefaultImports
+defmodule Derangedium.Command.Impostor do
+  use Derangedium.Command.WithDefaultImports
   @moduledoc """
   Enables impersonation in the current channel
   """
@@ -19,7 +19,7 @@ defmodule Deutexrium.Command.Impostor do
     end
 
     # create new webhook
-    response = case Api.create_webhook(interaction.channel_id, %{name: "Deuterium impersonation mode", avatar: "https://cdn.discordapp.com/embed/avatars/0.png"}, "create webhook for impersonation") do
+    response = case Api.create_webhook(interaction.channel_id, %{name: "Derangedium impersonation mode", avatar: "https://cdn.discordapp.com/embed/avatars/0.png"}, "create webhook for impersonation") do
       {:ok, %{id: hook_id, token: hook_token}} ->
         data = {hook_id, hook_token}
         Server.Channel.set({interaction.channel_id, interaction.guild_id}, :webhook_data, data)

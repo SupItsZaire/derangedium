@@ -1,4 +1,4 @@
-defmodule Deutexrium.Server.Channel do
+defmodule Derangedium.Server.Channel do
   @moduledoc """
   Keeps track of channel data and settings, as well as manages generation
   and training of the associated Markov model
@@ -8,9 +8,9 @@ defmodule Deutexrium.Server.Channel do
 
   use GenServer
   require Logger
-  alias Deutexrium.Persistence.Meta
-  alias Deutexrium.Persistence
-  alias Deutexrium.Server
+  alias Derangedium.Persistence.Meta
+  alias Derangedium.Persistence
+  alias Derangedium.Server
   alias Server.RqRouter
 
   defmodule State do
@@ -93,7 +93,7 @@ defmodule Deutexrium.Server.Channel do
     end
 
     Logger.info("channel-#{id} server: loaded")
-    timeout = Application.fetch_env!(:deutexrium, :channel_unload_timeout)
+    timeout = Application.fetch_env!(:derangedium, :channel_unload_timeout)
     {:ok, %State{
       id: {id, guild},
       model: model,
@@ -213,7 +213,7 @@ defmodule Deutexrium.Server.Channel do
 
   def handle_info(:continue_pre_train, %State{id: {cid, _}} = state) do
     {inter, {fetched, limit, skipped}, before, last, locale} = state.pre_train
-    batch_size = Application.fetch_env!(:deutexrium, :pre_train_batch_size)
+    batch_size = Application.fetch_env!(:derangedium, :pre_train_batch_size)
     requesting = min(limit - fetched, batch_size)
 
     state = case Nostrum.Api.get_channel_messages(cid, requesting, {:before, before}) do
@@ -298,15 +298,15 @@ defmodule Deutexrium.Server.Channel do
 
     bar = cond do
       status == :done and fetched == 0 ->
-        "#{bar}\n#{Deutexrium.Translation.translate(locale, "response.pre_train.hint.empty")}"
+        "#{bar}\n#{Derangedium.Translation.translate(locale, "response.pre_train.hint.empty")}"
       status == :done and fetched < limit ->
-        "#{bar}\n*#{Deutexrium.Translation.translate(locale, "response.pre_train.hint.okay")}*"
+        "#{bar}\n*#{Derangedium.Translation.translate(locale, "response.pre_train.hint.okay")}*"
       status == :error ->
-        "#{bar}\n*#{Deutexrium.Translation.translate(locale, "response.pre_train.error.fetch_failed")}*"
+        "#{bar}\n*#{Derangedium.Translation.translate(locale, "response.pre_train.error.fetch_failed")}*"
       true -> bar
     end
 
-    string = Deutexrium.Translation.translate(locale, "response.pre_train.progress",
+    string = Derangedium.Translation.translate(locale, "response.pre_train.progress",
       [emoji, "#{fetched}", "#{limit}", "#{skipped}", bar])
     Nostrum.Api.edit_interaction_response(inter, %{content: string})
   end

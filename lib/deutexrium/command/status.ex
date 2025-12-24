@@ -1,5 +1,5 @@
-defmodule Deutexrium.Command.Status do
-  use Deutexrium.Command.WithDefaultImports
+defmodule Derangedium.Command.Status do
+  use Derangedium.Command.WithDefaultImports
   @moduledoc """
   Sends back the model status
   """

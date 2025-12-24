@@ -1,5 +1,5 @@
-defmodule Deutexrium.Command.Donate do
-  use Deutexrium.Command.WithDefaultImports
+defmodule Derangedium.Command.Donate do
+  use Derangedium.Command.WithDefaultImports
   @moduledoc """
   Sends back donation info
   """

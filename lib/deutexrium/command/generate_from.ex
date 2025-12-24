@@ -1,5 +1,5 @@
-defmodule Deutexrium.Command.GenerateFrom do
-  use Deutexrium.Command.WithDefaultImports
+defmodule Derangedium.Command.GenerateFrom do
+  use Derangedium.Command.WithDefaultImports
   @moduledoc """
   Generates a message from the selected channel's local model
   """

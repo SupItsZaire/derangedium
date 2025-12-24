@@ -1,7 +1,7 @@
-defmodule Deutexrium.Meme do
+defmodule Derangedium.Meme do
   @moduledoc "Generates memes"
 
-  alias Deutexrium.Server.Channel
+  alias Derangedium.Server.Channel
 
   @templates [
     :gif_caption,
@@ -182,7 +182,7 @@ defmodule Deutexrium.Meme do
   end
 
   def generate_from_template(channel, root, template_spec) do
-    template_path = :code.priv_dir(:deutexrium)
+    template_path = :code.priv_dir(:derangedium)
       |> Path.join("meme_templates")
       |> Path.join(template_spec.template)
     meme_path = root |> Path.join(["output", Path.extname(template_path)])
