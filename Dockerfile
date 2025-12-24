@@ -1,5 +1,5 @@
 # build
-FROM elixir:1.16-otp-25-alpine as build
+FROM elixir:1.16-otp-25-alpine AS build
 
 COPY config config
 COPY lib lib

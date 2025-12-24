@@ -16,7 +16,7 @@ defmodule Derangedium.Persistence do
     Logger.debug("calculating disk usage")
     Process.send_after(self(), :calculate_usage, 60_000)
     size = calculate_used_space()
-    derangedium.Prometheus.data_size(size)
+    Derangedium.Prometheus.data_size(size)
     {:noreply, {size, interval}}
   end
   def handle_call(:storage_size, _from, {size, _} = state) do
